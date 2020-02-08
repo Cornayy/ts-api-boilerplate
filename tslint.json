@@ -28,7 +28,7 @@
         "deprecation": true,
         "class-name": true,
         "no-consecutive-blank-lines": true,
-        "semicolon": [true, "always"],
+        "semicolon": [true, "always", "ignore-bound-class-methods"],
         "trailing-comma": [
             true,
             {
@@ -41,7 +41,7 @@
                 "esSpecCompliant": true
             }
         ],
-        "max-line-length": [true, 150],
+        "max-line-length": [true, 100],
         "ter-indent": 4,
         "align": [true, "parameters", "statements", "arguments", "members", "elements"],
         "no-irregular-whitespace": true,
@@ -64,7 +64,12 @@
             }
         ],
         "variable-name": {
-            "options": ["ban-keywords", "check-format", "allow-leading-underscore", "allow-pascal-case"]
+            "options": [
+                "ban-keywords",
+                "check-format",
+                "allow-leading-underscore",
+                "allow-pascal-case"
+            ]
         }
     },
     "rulesDirectory": []

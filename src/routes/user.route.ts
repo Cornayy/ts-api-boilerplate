@@ -1,17 +1,15 @@
 import { IRoute } from '../interfaces/route';
 import * as express from 'express';
-import { IController } from 'src/interfaces/controller';
-import { UserController } from 'src/controllers/user.controller';
-import { Inject } from 'typedi';
+import { IController } from '../interfaces/controller';
+import { UserController } from '../controllers/user.controller';
 
 export class UserRoute implements IRoute {
     public path: string;
     public router: express.Router;
-
-    @Inject(type => UserController)
     public controller: IController;
 
-    constructor() {
+    constructor(controller: UserController) {
+        this.controller = controller;
         this.router = express.Router();
         this.path = '/users';
         this.setRoutes();
