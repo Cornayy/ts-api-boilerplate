@@ -1,21 +1,21 @@
 import { IController } from '../interfaces/controller';
 import { NextFunction, Request, Response } from 'express';
 import { Service } from 'typedi';
-import { UserService } from '../services/user.service';
-import { IUser } from '../interfaces/user';
+import { AuthorService } from '../services/author.service';
+import { IAuthor } from '../interfaces/author';
 
 @Service()
-export class UserController implements IController {
-    private service: UserService;
+export class AuthorController implements IController {
+    private service: AuthorService;
 
-    constructor(service: UserService) {
+    constructor(service: AuthorService) {
         this.service = service;
     }
 
     getAll = async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const users: IUser[] = await this.service.getUsers();
-            res.status(200).json(users);
+            const books: IAuthor[] = await this.service.getAuthors();
+            res.status(200).json(books);
         } catch (error) {
             next(error);
         }

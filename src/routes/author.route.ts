@@ -1,17 +1,19 @@
-import { IRoute } from '../interfaces/route';
 import * as express from 'express';
+import { IRoute } from '../interfaces/route';
 import { IController } from '../interfaces/controller';
-import { UserController } from '../controllers/user.controller';
+import { AuthorController } from '../controllers/author.controller';
+import { Service } from 'typedi';
 
-export class UserRoute implements IRoute {
+@Service()
+export class AuthorRoute implements IRoute {
     public path: string;
     public router: express.Router;
     public controller: IController;
 
-    constructor(controller: UserController) {
+    constructor(controller: AuthorController) {
         this.controller = controller;
         this.router = express.Router();
-        this.path = '/users';
+        this.path = '/authors';
         this.setRoutes();
     }
 

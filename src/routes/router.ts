@@ -1,8 +1,8 @@
-import { UserService } from '../services/user.service';
-import { UserController } from '../controllers/user.controller';
+import 'reflect-metadata';
 import { IRoute } from './../interfaces/route';
-import { UserRoute } from './user.route';
-import { Service } from 'typedi';
+import { AuthorRoute } from './author.route';
+import { BookRoute } from './book.route';
+import { Service, Container } from 'typedi';
 
 @Service()
 export class Router {
@@ -14,6 +14,7 @@ export class Router {
     }
 
     private initializeRoutes() {
-        this.routes.push(new UserRoute(new UserController(new UserService())));
+        this.routes.push(Container.get(BookRoute));
+        this.routes.push(Container.get(AuthorRoute));
     }
 }

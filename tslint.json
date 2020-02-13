@@ -46,6 +46,7 @@
         "align": [true, "parameters", "statements", "arguments", "members", "elements"],
         "no-irregular-whitespace": true,
         "no-trailing-whitespace": true,
+        "ter-arrow-parens": false,
         "typedef-whitespace": [
             true,
             {
