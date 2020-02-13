@@ -2,7 +2,7 @@
 
 ## About
 
-A great starting point for a TypeScript REST API.
+A great starting point for a TypeScript REST API using Mongoose.
 
 ## Usage
 
