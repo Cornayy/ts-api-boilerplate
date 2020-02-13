@@ -1,4 +1,4 @@
-import * as express from 'express';
+import { Router } from 'express';
 import { IRoute } from '../interfaces/route';
 import { IController } from '../interfaces/controller';
 import { BookController } from '../controllers/book.controller';
@@ -7,12 +7,12 @@ import { Service } from 'typedi';
 @Service()
 export class BookRoute implements IRoute {
     public path: string;
-    public router: express.Router;
+    public router: Router;
     public controller: IController;
 
     constructor(controller: BookController) {
         this.controller = controller;
-        this.router = express.Router();
+        this.router = Router();
         this.path = '/books';
         this.setRoutes();
     }

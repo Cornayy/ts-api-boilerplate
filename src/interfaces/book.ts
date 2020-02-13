@@ -1,7 +1,7 @@
-import * as mongoose from 'mongoose';
+import { Document } from 'mongoose';
 import { IChapter } from './chapter';
 
-export interface IBook extends mongoose.Document {
+export interface IBook extends Document {
     _id: string;
     title: string;
     publishDate: Date;

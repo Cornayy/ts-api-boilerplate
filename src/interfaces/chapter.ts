@@ -1,6 +1,6 @@
-import * as mongoose from 'mongoose';
+import { Document } from 'mongoose';
 
-export interface IChapter extends mongoose.Document {
+export interface IChapter extends Document {
     title: string;
     numberOfPages: number;
 }

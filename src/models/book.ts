@@ -1,7 +1,7 @@
 import { IBook } from './../interfaces/book';
-import * as mongoose from 'mongoose';
+import { model, Schema } from 'mongoose';
 
-export const bookSchema = new mongoose.Schema({
+export const bookSchema = new Schema({
     _id: { type: String },
     category: { type: String, required: true },
     chapters: [
@@ -21,4 +21,4 @@ export const bookSchema = new mongoose.Schema({
     title: { type: String, required: true },
 });
 
-export const Book = mongoose.model<IBook>('Book', bookSchema);
+export const Book = model<IBook>('Book', bookSchema);

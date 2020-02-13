@@ -1,6 +1,6 @@
-import * as mongoose from 'mongoose';
+import { Document } from 'mongoose';
 
-export interface IAuthor extends mongoose.Document {
+export interface IAuthor extends Document {
     _id: string;
     firstName: string;
     lastName: string;

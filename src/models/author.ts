@@ -1,7 +1,7 @@
-import * as mongoose from 'mongoose';
+import { model, Schema } from 'mongoose';
 import { IAuthor } from '../interfaces/author';
 
-export const authorSchema = new mongoose.Schema({
+export const authorSchema = new Schema({
     _id: { type: String },
     birthDate: { type: Date, required: true },
     books: [{ type: String, ref: 'Book' }],
@@ -11,4 +11,4 @@ export const authorSchema = new mongoose.Schema({
     ranking: { type: Number, unique: true, min: 1 },
 });
 
-export const Author = mongoose.model<IAuthor>('Author', authorSchema);
+export const Author = model<IAuthor>('Author', authorSchema);
