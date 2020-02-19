@@ -1,3 +1,4 @@
+import * as autoIncrement from 'mongoose-auto-increment';
 import { IBook } from './../interfaces/book';
 import { model, Schema } from 'mongoose';
 
@@ -19,6 +20,11 @@ export const bookSchema = new Schema({
         },
     },
     title: { type: String, required: true },
+});
+
+bookSchema.plugin(autoIncrement.plugin, {
+    model: 'Book',
+    startAt: 1,
 });
 
 export const Book = model<IBook>('Book', bookSchema);

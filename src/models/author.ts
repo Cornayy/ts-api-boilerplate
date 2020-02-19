@@ -1,3 +1,4 @@
+import * as autoIncrement from 'mongoose-auto-increment';
 import { model, Schema } from 'mongoose';
 import { IAuthor } from '../interfaces/author';
 
@@ -9,6 +10,11 @@ export const authorSchema = new Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     ranking: { type: Number, unique: true, min: 1 },
+});
+
+authorSchema.plugin(autoIncrement.plugin, {
+    model: 'Author',
+    startAt: 1,
 });
 
 export const Author = model<IAuthor>('Author', authorSchema);
