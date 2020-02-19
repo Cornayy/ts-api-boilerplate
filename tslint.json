@@ -12,6 +12,7 @@
         "member-ordering": [false],
         "new-parens": true,
         "object-literal-shorthand": true,
+        "object-literal-sort-keys": false,
         "object-literal-key-quotes": [true, "consistent-as-needed"],
         "no-unnecessary-qualifier": true,
         "increment-decrement": true,
@@ -30,7 +31,7 @@
         "no-consecutive-blank-lines": true,
         "semicolon": [true, "always", "ignore-bound-class-methods"],
         "trailing-comma": [
-            true,
+            false,
             {
                 "multiline": {
                     "objects": "always",
@@ -41,7 +42,7 @@
                 "esSpecCompliant": true
             }
         ],
-        "max-line-length": [true, 100],
+        "max-line-length": [true, 150],
         "ter-indent": 4,
         "align": [true, "parameters", "statements", "arguments", "members", "elements"],
         "no-irregular-whitespace": true,

@@ -12,6 +12,18 @@ export class BookController implements IController {
         this.service = service;
     }
 
+    /**
+     * @swagger
+     * /books:
+     *   get:
+     *     tags:
+     *     - Book
+     *     summary: Returns all books.
+     *     description: This endpoint will return every book in the database.
+     *     responses:
+     *       200:
+     *         description: Receive all books.
+     */
     getAll = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const books: IBook[] = await this.service.getBooks();

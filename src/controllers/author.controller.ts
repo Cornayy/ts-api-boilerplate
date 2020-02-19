@@ -12,6 +12,18 @@ export class AuthorController implements IController {
         this.service = service;
     }
 
+    /**
+     * @swagger
+     * /authors:
+     *   get:
+     *     tags:
+     *     - Author
+     *     summary: Returns all authors.
+     *     description: This endpoint will return every author in the database.
+     *     responses:
+     *       200:
+     *         description: Receive all authors.
+     */
     getAll = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const books: IAuthor[] = await this.service.getAuthors();
