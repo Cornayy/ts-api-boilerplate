@@ -37,10 +37,9 @@ export class App {
         try {
             const swaggerSpec = swaggerJSDoc(options);
             this.app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+            this.router.routes.forEach(route => this.app.use('/', route.router));
         } catch (err) {
             Logger.error(err);
         }
-
-        this.router.routes.forEach(route => this.app.use('/', route.router));
     }
 }

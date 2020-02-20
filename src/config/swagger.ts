@@ -8,5 +8,5 @@ const swaggerDefinition = {
 
 export const options = {
     swaggerDefinition,
-    apis: ['./src/controllers/*.ts']
+    apis: ['./src/controllers/*.ts', './src/models/*.ts']
 };
