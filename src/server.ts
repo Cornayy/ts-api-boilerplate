@@ -1,13 +1,7 @@
 import 'reflect-metadata';
-import { Database } from './database/database';
 import { Container } from 'typedi';
+import { Router } from './routes/router';
+import { App } from './app';
 
-(async () => {
-    Database.initialize();
-
-    const { Router } = await import('./routes/router');
-    const { App } = await import('./app');
-
-    // tslint:disable-next-line: no-unused-expression
-    new App(Container.get(Router));
-})();
+// tslint:disable-next-line: no-unused-expression
+new App(Container.get(Router));

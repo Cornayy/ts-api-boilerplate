@@ -1,4 +1,4 @@
-import { Logger } from '../utils/Logger';
+import { Logger } from '../utils/logger';
 import { Author } from '../models/author';
 import { authorSeed } from '../seeds/author.seed';
 import { Book } from '../models/book';

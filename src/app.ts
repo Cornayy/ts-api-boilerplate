@@ -3,12 +3,15 @@ import * as express from 'express';
 import * as cors from 'cors';
 import * as swaggerUi from 'swagger-ui-express';
 import * as swaggerJSDoc from 'swagger-jsdoc';
-import { Logger } from './utils/Logger';
+import { Logger } from './utils/logger';
 import { Router } from './routes/router';
 import { options } from './config/swagger';
+import { Service } from 'typedi';
+import { Database } from './database/database';
 
+@Service()
 export class App {
-    private app: express.Application;
+    public app: express.Application;
     private port: string | number;
     private router: Router;
 
@@ -25,6 +28,7 @@ export class App {
         this.setRoutes();
         this.app.listen(this.port);
 
+        Database.initialize();
         Logger.info('App launched.');
     }
 

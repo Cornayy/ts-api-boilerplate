@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import * as autoIncrement from 'mongoose-auto-increment';
+import { Seeder } from './seeder';
 
 export class Database {
     public static async initialize() {
@@ -8,16 +8,12 @@ export class Database {
                 useCreateIndex: true,
                 useFindAndModify: true,
                 useNewUrlParser: true,
-                useUnifiedTopology: true,
+                useUnifiedTopology: true
             });
-
-            autoIncrement.initialize(mongoose.connection);
         } catch (err) {
             process.exit(0);
         }
 
-        // Lazy loading seeder to avoid auto increment initialization.
-        const { Seeder } = await import('./seeder');
         Seeder.seed();
     }
 }
