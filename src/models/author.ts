@@ -1,4 +1,3 @@
-import * as autoIncrement from 'mongoose-auto-increment';
 import { Initializer } from '../../src/utils/initializer';
 import { model, Schema } from 'mongoose';
 import { IAuthor } from '../interfaces/author';
@@ -42,13 +41,6 @@ export const authorSchema = new Schema({
     ranking: { type: Number, unique: true, min: 1 }
 });
 
-try {
-    authorSchema.plugin(autoIncrement.plugin, {
-        model: 'Author',
-        startAt: 1
-    });
-} catch (err) {
-    Initializer.increment();
-}
+Initializer.initializeSchema(authorSchema, 'Author');
 
 export const Author = model<IAuthor>('Author', authorSchema);

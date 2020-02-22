@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import { Container } from 'typedi';
 import { App } from '../../src/app';
 
-const app = Container.get(App).app;
+const { app } = Container.get(App);
 
 describe('Testing authors route', () => {
     describe('index route', () => {
