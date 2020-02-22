@@ -12,6 +12,7 @@ A great starting point for a TypeScript REST API using Mongoose.
 * Services
 * Models
 * Database
+* Tests (Mocha, Chai, Supertest & Istanbul for Code Coverage)
 * Swagger
 
 ## Usage
