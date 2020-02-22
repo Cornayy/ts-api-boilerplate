@@ -23,6 +23,8 @@ export class AuthorController implements IController {
      *     responses:
      *       200:
      *         description: Receive all authors.
+     *         schema:
+     *           $ref: '#definitions/Author'
      */
     getAll = async (req: Request, res: Response, next: NextFunction) => {
         try {

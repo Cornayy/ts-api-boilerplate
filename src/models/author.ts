@@ -14,17 +14,21 @@ import { IAuthor } from '../interfaces/author';
  *     - birthDate
  *     properties:
  *      birthDate:
- *       type: Date
+ *       type: string
  *      books:
- *       type: Array
+ *       type: array
+ *       items:
+ *          type:
+ *          schema:
+ *             $ref: '#definitions/Book'
  *      country:
- *       type: String
+ *       type: string
  *      firstName:
- *       type: String
+ *       type: string
  *      lastName:
- *       type: String
+ *       type: string
  *      ranking:
- *       type: Number
+ *       type: integer
  */
 
 export const authorSchema = new Schema({

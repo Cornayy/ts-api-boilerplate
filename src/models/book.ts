@@ -12,14 +12,16 @@ import { model, Schema } from 'mongoose';
  *     - publishDate
  *     - title
  *     properties:
- *      cateogory:
- *       type: String
+ *      category:
+ *       type: string
  *      chapters:
- *       type: Array
+ *       type: array
+ *       items:
+ *          type: object
  *      publishDate:
- *       type: Date
+ *       type: string
  *      title:
- *       type: String
+ *       type: string
  */
 
 export const bookSchema = new Schema({

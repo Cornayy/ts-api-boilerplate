@@ -23,6 +23,8 @@ export class BookController implements IController {
      *     responses:
      *       200:
      *         description: Receive all books.
+     *         schema:
+     *            $ref: '#definitions/Book'
      */
     getAll = async (req: Request, res: Response, next: NextFunction) => {
         try {
