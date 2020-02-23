@@ -17,11 +17,26 @@ import { Initializer } from '../../src/utils/initializer';
  *      chapters:
  *       type: array
  *       items:
- *          type: object
+ *         $ref: '#definitions/Chapter'
  *      publishDate:
  *       type: string
  *      title:
  *       type: string
+ */
+
+/**
+ * @swagger
+ * definitions:
+ *   Chapter:
+ *     type: object
+ *     required:
+ *     - numberOfPages
+ *     - title
+ *     properties:
+ *      title:
+ *       type: string
+ *      numberOfPages:
+ *       type: integer
  */
 
 export const bookSchema = new Schema({

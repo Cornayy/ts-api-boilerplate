@@ -18,9 +18,7 @@ import { IAuthor } from '../interfaces/author';
  *      books:
  *       type: array
  *       items:
- *          type:
- *          schema:
- *             $ref: '#definitions/Book'
+ *         $ref: '#definitions/Book'
  *      country:
  *       type: string
  *      firstName:
