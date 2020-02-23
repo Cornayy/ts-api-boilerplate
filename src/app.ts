@@ -5,9 +5,10 @@ import * as swaggerUi from 'swagger-ui-express';
 import * as swaggerJSDoc from 'swagger-jsdoc';
 import { Logger } from './utils/logger';
 import { Router } from './routes/router';
-import { options } from './config/swagger';
 import { Service } from 'typedi';
 import { Database } from './database/database';
+import { options } from './config/swagger';
+import { apiOptions } from './config/options';
 
 @Service()
 export class App {
@@ -41,7 +42,7 @@ export class App {
         try {
             const swaggerSpec = swaggerJSDoc(options);
             this.app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-            this.router.routes.forEach(route => this.app.use('/', route.router));
+            this.router.routes.forEach(route => this.app.use(apiOptions.baseUrl, route.router));
         } catch (err) {
             Logger.error(err);
         }
