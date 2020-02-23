@@ -9,7 +9,7 @@ const { app } = Container.get(App);
 describe('Testing books route', () => {
     describe('index route', () => {
         it('Should return all books', async () => {
-            const { body } = await request(app).get('/books');
+            const { body } = await request(app).get('/api/v1/books');
             const firstBook = body[0];
 
             expect(body).to.be.an('array');

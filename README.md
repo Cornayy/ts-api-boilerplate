@@ -20,3 +20,20 @@ A great starting point for a TypeScript REST API using Mongoose.
 ```
 npm install
 ```
+
+### Commands
+
+Development
+```
+npm run dev
+```
+
+Build
+```
+npm run build
+``` 
+
+Test
+```
+npm test
+```

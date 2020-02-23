@@ -9,7 +9,7 @@ const { app } = Container.get(App);
 describe('Testing authors route', () => {
     describe('index route', () => {
         it('Should return all authors', async () => {
-            const { body } = await request(app).get('/authors');
+            const { body } = await request(app).get('/api/v1/authors');
             const firstAuthor = body[0];
 
             expect(body).to.be.an('array');
