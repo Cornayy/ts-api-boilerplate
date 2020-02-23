@@ -1,5 +1,5 @@
 import { agent as request } from 'supertest';
-import { describe } from 'mocha';
+import { describe, it } from 'mocha';
 import { expect } from 'chai';
 import { Container } from 'typedi';
 import { App } from '../../src/app';

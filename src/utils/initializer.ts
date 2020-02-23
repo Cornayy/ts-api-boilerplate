@@ -1,5 +1,5 @@
-import { connection, Schema } from 'mongoose';
 import * as autoIncrement from 'mongoose-auto-increment';
+import { connection, Schema } from 'mongoose';
 
 export class Initializer {
     public static initializeIncrement(): void {
