@@ -21,6 +21,16 @@ A great starting point for a TypeScript REST API using Mongoose.
 npm install
 ```
 
+### .env
+
+Rename the `.env.example` file to `.env` and fill in the variables. 
+
+```
+PORT=3000
+MONGO_URI=MONGOSERVER
+MONGO_DB=DATABASENAME
+```
+
 ### Commands
 
 Development
