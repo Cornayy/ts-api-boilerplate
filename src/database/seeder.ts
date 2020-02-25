@@ -1,25 +1,32 @@
+import { ISeed } from './../interfaces/seed';
 import { Logger } from '../utils/logger';
-import { Author } from '../models/author';
 import { authorSeed } from '../seeds/author.seed';
-import { Book } from '../models/book';
 import { bookSeed } from '../seeds/book.seed';
+import { Service } from 'typedi';
 
+@Service()
 export class Seeder {
-    public static async seed() {
-        try {
-            const books = await Book.find({});
-            if (!books.length) {
-                await Book.insertMany(bookSeed);
-                Logger.info('Books seeded.');
-            }
+    private seeds: ISeed[] = [];
 
-            const authors = await Author.find({});
-            if (!authors.length) {
-                await Author.insertMany(authorSeed);
-                Logger.info('Authors seeded.');
-            }
+    constructor() {
+        this.seeds.push(authorSeed);
+        this.seeds.push(bookSeed);
+    }
+
+    public async seed() {
+        try {
+            this.seeds.forEach(async ({ Model, data }) => {
+                const resource = await Model.find({});
+
+                if (!resource.length) {
+                    const { collectionName } = Model.collection;
+
+                    data.forEach(async props => await new Model(props).save());
+                    Logger.info(`${collectionName} seeded.`);
+                }
+            });
         } catch (err) {
-            Logger.warn('Seed failed.');
+            Logger.warn(err);
         }
     }
 }

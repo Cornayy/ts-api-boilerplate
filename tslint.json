@@ -30,6 +30,7 @@
         "class-name": true,
         "no-consecutive-blank-lines": true,
         "semicolon": [true, "always", "ignore-bound-class-methods"],
+        "array-type": [true, "array"],
         "trailing-comma": [
             false,
             {

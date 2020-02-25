@@ -1,3 +1,4 @@
+import { DocsRoute } from './docs.route';
 import 'reflect-metadata';
 import { IRoute } from './../interfaces/route';
 import { AuthorRoute } from './author.route';
@@ -16,5 +17,6 @@ export class Router {
     private initializeRoutes() {
         this.routes.push(Container.get(BookRoute));
         this.routes.push(Container.get(AuthorRoute));
+        this.routes.push(Container.get(DocsRoute));
     }
 }

@@ -1,9 +1,15 @@
 import { NextFunction, Request, Response } from 'express';
 
+export interface IRouteParameters {
+    req: Request;
+    res: Response;
+    next: NextFunction;
+}
+
 export interface IController {
-    getAll(req: Request, res: Response, next: NextFunction): void;
-    get(req: Request, res: Response, next: NextFunction): void;
-    update(req: Request, res: Response, next: NextFunction): void;
-    create(req: Request, res: Response, next: NextFunction): void;
-    delete(req: Request, res: Response, next: NextFunction): void;
+    getAll(params: IRouteParameters): void;
+    get(params: IRouteParameters): void;
+    update(params: IRouteParameters): void;
+    create(params: IRouteParameters): void;
+    delete(params: IRouteParameters): void;
 }

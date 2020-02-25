@@ -1,12 +1,20 @@
 import { connect } from 'mongoose';
 import { Seeder } from './seeder';
+import { Service } from 'typedi';
 
+@Service()
 export class Database {
-    public static async initialize() {
+    private seeder: Seeder;
+
+    constructor(seeder: Seeder) {
+        this.seeder = seeder;
+    }
+
+    public async initialize() {
         try {
             connect(`${process.env.MONGO_URI}/${process.env.MONGO_DB}`, {
                 useCreateIndex: true,
-                useFindAndModify: true,
+                useFindAndModify: false,
                 useNewUrlParser: true,
                 useUnifiedTopology: true
             });
@@ -14,6 +22,6 @@ export class Database {
             process.exit(0);
         }
 
-        Seeder.seed();
+        this.seeder.seed();
     }
 }

@@ -1,5 +1,4 @@
-import { IController } from '../interfaces/controller';
-import { NextFunction, Request, Response } from 'express';
+import { IController, IRouteParameters } from '../interfaces/controller';
 import { Service } from 'typedi';
 import { BookService } from '../services/book.service';
 import { IBook } from '../interfaces/book';
@@ -26,7 +25,7 @@ export class BookController implements IController {
      *         schema:
      *            $ref: '#definitions/Book'
      */
-    getAll = async (req: Request, res: Response, next: NextFunction) => {
+    getAll = async ({ req, res, next }: IRouteParameters) => {
         try {
             const books: IBook[] = await this.service.getBooks();
             res.status(200).json(books);

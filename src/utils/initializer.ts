@@ -14,6 +14,7 @@ export class Initializer {
             });
         } catch (err) {
             this.initializeIncrement();
+            this.initializeSchema(schema, model);
         }
     }
 }
