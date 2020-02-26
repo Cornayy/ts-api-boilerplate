@@ -1,6 +1,6 @@
-import { Initializer } from '../../src/utils/initializer';
+import { Initializer } from '../../utils/initializer';
 import { model, Schema } from 'mongoose';
-import { IAuthor } from '../interfaces/author';
+import { IAuthor } from '../../types';
 
 /**
  * @swagger

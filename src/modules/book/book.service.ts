@@ -1,5 +1,5 @@
-import { IBook } from '../interfaces/book';
-import { Book } from '../models/book';
+import { IBook } from '../../types';
+import { Book } from './book';
 import { Service } from 'typedi';
 
 @Service()

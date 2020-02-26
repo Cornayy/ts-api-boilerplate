@@ -1,33 +1,32 @@
-import { IController, IRouteParameters } from '../interfaces/controller';
+import { IRouteParameters, IController, IAuthor } from '../../types';
 import { Service } from 'typedi';
-import { BookService } from '../services/book.service';
-import { IBook } from '../interfaces/book';
+import { AuthorService } from './author.service';
 
 @Service()
-export class BookController implements IController {
-    private service: BookService;
+export class AuthorController implements IController {
+    private service: AuthorService;
 
-    constructor(service: BookService) {
+    constructor(service: AuthorService) {
         this.service = service;
     }
 
     /**
      * @swagger
-     * /books:
+     * /authors:
      *   get:
      *     tags:
-     *     - Book
-     *     summary: Returns all books.
-     *     description: This endpoint will return every book in the database.
+     *     - Author
+     *     summary: Returns all authors.
+     *     description: This endpoint will return every author in the database.
      *     responses:
      *       200:
-     *         description: Receive all books.
+     *         description: Receive all authors.
      *         schema:
-     *            $ref: '#definitions/Book'
+     *           $ref: '#definitions/Author'
      */
     getAll = async ({ req, res, next }: IRouteParameters) => {
         try {
-            const books: IBook[] = await this.service.getBooks();
+            const books: IAuthor[] = await this.service.getAuthors();
             res.status(200).json(books);
         } catch (error) {
             next(error);

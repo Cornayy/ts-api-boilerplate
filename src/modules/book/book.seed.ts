@@ -1,5 +1,5 @@
-import { Book } from './../models/book';
-import { ISeed } from 'src/interfaces/seed';
+import { Book } from './book';
+import { ISeed } from '../../types';
 
 export const bookSeed: ISeed = {
     Model: Book,

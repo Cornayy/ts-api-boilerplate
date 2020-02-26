@@ -1,9 +1,9 @@
 import { agent as request } from 'supertest';
 import { describe, it } from 'mocha';
 import { expect } from 'chai';
-import { apiOptions } from '../config/options';
+import { apiOptions } from '../../config/options';
 import { Container } from 'typedi';
-import { App } from '../../src/app';
+import { App } from '../../app';
 
 const { app } = Container.get(App);
 

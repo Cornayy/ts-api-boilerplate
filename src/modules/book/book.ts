@@ -1,6 +1,6 @@
-import { IBook } from './../interfaces/book';
+import { IBook } from '../../types';
 import { model, Schema } from 'mongoose';
-import { Initializer } from '../../src/utils/initializer';
+import { Initializer } from '../../utils/initializer';
 
 /**
  * @swagger

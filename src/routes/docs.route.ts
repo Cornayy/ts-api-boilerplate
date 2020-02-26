@@ -1,7 +1,7 @@
 import * as swaggerUi from 'swagger-ui-express';
 import * as swaggerJSDoc from 'swagger-jsdoc';
 import { Router } from 'express';
-import { IRoute } from '../interfaces/route';
+import { IRoute } from '../types';
 import { Service } from 'typedi';
 import { options } from '../config/swagger';
 

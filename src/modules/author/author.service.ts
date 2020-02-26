@@ -1,5 +1,5 @@
-import { IAuthor } from '../interfaces/author';
-import { Author } from '../models/author';
+import { IAuthor } from '../../types';
+import { Author } from './author';
 import { Service } from 'typedi';
 
 @Service()

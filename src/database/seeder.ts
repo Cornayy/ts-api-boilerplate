@@ -1,7 +1,7 @@
-import { ISeed } from './../interfaces/seed';
+import { ISeed } from '../types';
 import { Logger } from '../utils/logger';
-import { authorSeed } from '../seeds/author.seed';
-import { bookSeed } from '../seeds/book.seed';
+import { authorSeed } from '../modules/author/author.seed';
+import { bookSeed } from '../modules/book/book.seed';
 import { Service } from 'typedi';
 
 @Service()

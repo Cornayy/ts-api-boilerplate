@@ -1,6 +1,6 @@
-import { DocsRoute } from './docs.route';
 import 'reflect-metadata';
-import { IRoute } from './../interfaces/route';
+import { IRoute } from '../types';
+import { DocsRoute } from './docs.route';
 import { AuthorRoute } from './author.route';
 import { BookRoute } from './book.route';
 import { Service, Container } from 'typedi';
