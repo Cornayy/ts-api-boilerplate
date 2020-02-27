@@ -40,7 +40,7 @@ export class App {
     private setRoutes() {
         try {
             this.router.routes.forEach(route =>
-                this.app.use(route.path === '/docs' ? '/' : apiOptions.baseUrl, route.router)
+                this.app.use(apiOptions.baseUrl, route.router)
             );
         } catch (err) {
             Logger.error(err);
