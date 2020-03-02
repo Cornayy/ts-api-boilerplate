@@ -24,15 +24,14 @@ export interface IChapter extends Document {
     numberOfPages: number;
 }
 
+export interface IUser extends Document {
+    username: string;
+    password: string;
+}
+
 export interface ISeed {
     Model: Model<Document>;
     data: object[];
-}
-
-export interface IRouteParameters {
-    req: Request;
-    res: Response;
-    next: NextFunction;
 }
 
 export interface IRoute {
@@ -40,10 +39,18 @@ export interface IRoute {
     router: Router;
 }
 
+export interface IPayload {
+    id: string;
+}
+
+export interface IUserController extends IController {
+    login(req: Request, res: Response, next: NextFunction): void;
+}
+
 export interface IController {
-    getAll(params: IRouteParameters): void;
-    get(params: IRouteParameters): void;
-    update(params: IRouteParameters): void;
-    create(params: IRouteParameters): void;
-    delete(params: IRouteParameters): void;
+    getAll(req: Request, res: Response, next: NextFunction): void;
+    get(req: Request, res: Response, next: NextFunction): void;
+    update(req: Request, res: Response, next: NextFunction): void;
+    create(req: Request, res: Response, next: NextFunction): void;
+    delete(req: Request, res: Response, next: NextFunction): void;
 }

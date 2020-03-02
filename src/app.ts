@@ -1,11 +1,14 @@
 import 'reflect-metadata';
 import * as express from 'express';
 import * as cors from 'cors';
+import * as passport from 'passport';
+import * as bodyParser from 'body-parser';
 import { Logger } from './utils/logger';
 import { Router } from './routes/router';
 import { Service } from 'typedi';
 import { Database } from './database/database';
 import { apiOptions } from './config/options';
+import { jwtStrategy } from './middleware/auth';
 
 @Service()
 export class App {
@@ -25,6 +28,7 @@ export class App {
 
     private setup() {
         this.initialize();
+        this.setStrategies();
         this.setRoutes();
         this.app.listen(this.port);
 
@@ -35,13 +39,18 @@ export class App {
     private initialize() {
         this.app.use(cors());
         this.app.use(express.json());
+        this.app.use(bodyParser.json());
+        this.app.use(bodyParser.urlencoded({ extended: true }));
+        this.app.use(passport.initialize());
+    }
+
+    private setStrategies() {
+        passport.use(jwtStrategy);
     }
 
     private setRoutes() {
         try {
-            this.router.routes.forEach(route =>
-                this.app.use(apiOptions.baseUrl, route.router)
-            );
+            this.router.routes.forEach(route => this.app.use(apiOptions.baseUrl, route.router));
         } catch (err) {
             Logger.error(err);
         }

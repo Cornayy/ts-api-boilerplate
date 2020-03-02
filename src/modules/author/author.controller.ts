@@ -1,6 +1,7 @@
-import { IRouteParameters, IController, IAuthor } from '../../types';
+import { IController, IAuthor } from '../../types';
 import { Service } from 'typedi';
 import { AuthorService } from './author.service';
+import { Request, Response, NextFunction } from 'express';
 
 @Service()
 export class AuthorController implements IController {
@@ -24,7 +25,7 @@ export class AuthorController implements IController {
      *         schema:
      *           $ref: '#definitions/Author'
      */
-    getAll = async ({ req, res, next }: IRouteParameters) => {
+    getAll = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const books: IAuthor[] = await this.service.getAuthors();
             res.status(200).json(books);

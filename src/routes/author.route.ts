@@ -1,3 +1,4 @@
+import * as passport from 'passport';
 import { Router } from 'express';
 import { IController, IRoute } from '../types';
 import { AuthorController } from '../modules/author/author.controller';
@@ -17,6 +18,10 @@ export class AuthorRoute implements IRoute {
     }
 
     private setRoutes(): void {
-        this.router.get(this.path, this.controller.getAll);
+        this.router.get(
+            this.path,
+            passport.authenticate('jwt', { session: false }),
+            this.controller.getAll
+        );
     }
 }
