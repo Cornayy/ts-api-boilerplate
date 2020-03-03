@@ -29,8 +29,8 @@ export class AuthorController implements IController {
         try {
             const books: IAuthor[] = await this.service.getAuthors();
             res.status(200).json(books);
-        } catch (error) {
-            next(error);
+        } catch (err) {
+            next(err);
         }
     };
 

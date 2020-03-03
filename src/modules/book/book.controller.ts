@@ -29,8 +29,8 @@ export class BookController implements IController {
         try {
             const books: IBook[] = await this.service.getBooks();
             res.status(200).json(books);
-        } catch (error) {
-            next(error);
+        } catch (err) {
+            next(err);
         }
     };
 

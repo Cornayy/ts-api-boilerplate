@@ -4,8 +4,9 @@
         "no-unused-expression": true
     },
     "plugins": ["prettier"],
-    "extends": ["tslint:recommended", "tslint-config-airbnb"],
+    "extends": ["tslint:recommended", "tslint-config-airbnb", "tslint-config-prettier"],
     "rules": {
+        "prettier": true,
         "quotemark": [true, "single"],
         "member-access": [false],
         "ordered-imports": [false],

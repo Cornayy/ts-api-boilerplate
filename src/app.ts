@@ -8,7 +8,8 @@ import { Router } from './routes/router';
 import { Service } from 'typedi';
 import { Database } from './database/database';
 import { apiOptions } from './config/options';
-import { jwtStrategy } from './middleware/auth';
+import { jwtStrategy } from './middleware/auth.middleware';
+import { error } from './middleware/error.middleware';
 
 @Service()
 export class App {
@@ -30,6 +31,7 @@ export class App {
         this.initialize();
         this.setStrategies();
         this.setRoutes();
+        this.setMiddleware();
         this.app.listen(this.port);
 
         this.database.initialize();
@@ -42,6 +44,10 @@ export class App {
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use(passport.initialize());
+    }
+
+    private setMiddleware() {
+        this.app.use(error);
     }
 
     private setStrategies() {

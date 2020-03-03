@@ -1,4 +1,5 @@
-import { IUser } from '../../types';
+import * as bcrypt from 'bcryptjs';
+import { IUserModel } from './../../types';
 import { model, Schema } from 'mongoose';
 import { Initializer } from '../../utils/initializer';
 
@@ -23,6 +24,10 @@ export const userSchema = new Schema({
     password: { type: String, required: true }
 });
 
+userSchema.methods.isValidPassword = async function(password: string): Promise<boolean> {
+    return await bcrypt.compare(password, this.password);
+};
+
 Initializer.initializeSchema(userSchema, 'User');
 
-export const User = model<IUser>('User', userSchema);
+export const User = model<IUserModel>('User', userSchema);

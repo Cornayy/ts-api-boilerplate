@@ -24,7 +24,11 @@ export interface IChapter extends Document {
     numberOfPages: number;
 }
 
-export interface IUser extends Document {
+export interface IUserModel extends IUser, Document {
+    isValidPassword(password: string): Promise<boolean>;
+}
+
+export interface IUser {
     username: string;
     password: string;
 }
