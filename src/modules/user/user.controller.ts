@@ -57,12 +57,18 @@ export class UserController implements IUserController {
      *   post:
      *     summary: Logs in a user.
      *     parameters:
-     *       - in: path
-     *         name: username
-     *         type: string
-     *       - in: path
-     *         name: username
-     *         type: string
+     *       - in: body
+     *         name: user
+     *         description: The combination of user and password.
+     *         schema:
+     *           type: object
+     *           required:
+     *             - username
+     *           properties:
+     *               username:
+     *                 type: string
+     *               password:
+     *                 type: string
      *     description: This endpoint allows it to login a user.
      *     responses:
      *       200:

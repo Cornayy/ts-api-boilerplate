@@ -11,5 +11,5 @@ const swaggerDefinition = {
 
 export const options = {
     swaggerDefinition,
-    apis: ['./src/controllers/*.ts', './src/models/*.ts']
+    apis: ['./src/modules/**/*.ts']
 };
