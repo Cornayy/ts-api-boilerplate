@@ -14,6 +14,7 @@ A great starting point for a TypeScript REST API using Mongoose.
 * Database
 * Tests (Mocha, Chai, Supertest & Istanbul for Code Coverage)
 * Swagger
+* JWT Authentication
 
 ## Usage
 
@@ -29,6 +30,7 @@ Rename the `.env.example` file to `.env` and fill in the variables.
 PORT=3000
 MONGO_URI=MONGOSERVER
 MONGO_DB=DATABASENAME
+TOKEN_SECRET=YOURJWTSECRET
 ```
 
 ### Commands
