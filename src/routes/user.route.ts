@@ -18,6 +18,6 @@ export class UserRoute implements IRoute {
 
     private setRoutes(): void {
         this.router.post(this.path, this.controller.create);
-        this.router.post(`${this.path}/login`, this.controller.login);
+        this.router.post('/login', this.controller.login);
     }
 }
