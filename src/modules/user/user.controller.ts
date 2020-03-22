@@ -86,7 +86,7 @@ export class UserController implements IUserController {
 
             if (valid) {
                 const token = signToken(user);
-                res.json({ token });
+                res.status(200).json({ token });
             } else {
                 res.status(401).json({ message: 'Unauthorized' });
             }

@@ -2,7 +2,6 @@ import 'reflect-metadata';
 import * as express from 'express';
 import * as cors from 'cors';
 import * as passport from 'passport';
-import * as bodyParser from 'body-parser';
 import { Logger } from './utils/logger';
 import { Router } from './routes/router';
 import { Service } from 'typedi';
@@ -41,8 +40,7 @@ export class App {
     private initialize() {
         this.app.use(cors());
         this.app.use(express.json());
-        this.app.use(bodyParser.json());
-        this.app.use(bodyParser.urlencoded({ extended: true }));
+        this.app.use(express.urlencoded({ extended: true }));
         this.app.use(passport.initialize());
     }
 
