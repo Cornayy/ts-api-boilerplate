@@ -1,16 +1,36 @@
+import * as path from 'path';
 import { ISeed } from '../types';
 import { Logger } from '../utils/logger';
-import { authorSeed } from '../modules/author/author.seed';
-import { bookSeed } from '../modules/book/book.seed';
 import { Service } from 'typedi';
+import { promises } from 'fs';
 
 @Service()
 export class Seeder {
     private seeds: ISeed[] = [];
 
-    constructor() {
-        this.seeds.push(authorSeed);
-        this.seeds.push(bookSeed);
+    public async load(dir) {
+        const files = await promises.readdir(dir);
+
+        return await Promise.all(
+            files.map(async file => {
+                const filePath = path.join(dir, file);
+                const stats = await promises.stat(filePath);
+
+                if (stats.isDirectory()) {
+                    return this.load(filePath);
+                }
+
+                const regex = /.+seed.ts/;
+                const isSeed = regex.test(filePath);
+
+                if (isSeed) {
+                    // Dynamically import seed, access the first exported object and add it to the seeds.
+                    const seed = await import(`../../${filePath}`);
+                    const data = (Object.values(seed)[0] as unknown) as ISeed;
+                    this.seeds.push(data);
+                }
+            })
+        );
     }
 
     public async seed() {

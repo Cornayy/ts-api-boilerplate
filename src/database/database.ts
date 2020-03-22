@@ -1,6 +1,7 @@
 import { connect } from 'mongoose';
 import { Seeder } from './seeder';
 import { Service } from 'typedi';
+import { paths } from '../config/options';
 
 @Service()
 export class Database {
@@ -22,6 +23,7 @@ export class Database {
             process.exit(0);
         }
 
+        await this.seeder.load(paths.modules);
         this.seeder.seed();
     }
 }
