@@ -1,36 +1,33 @@
-import * as dotenv from 'dotenv';
-import { IPayload, IUserModel } from '../types';
-import { ExtractJwt, Strategy, VerifiedCallback } from 'passport-jwt';
-import { User } from '../modules/user/user';
-import { sign } from 'jsonwebtoken';
+import dotenv from 'dotenv';
+import { IPayload } from '../../types';
+import { Response, Request, NextFunction } from 'express';
+import { User, roles } from '../modules/user/user';
+import { verify } from 'jsonwebtoken';
 
 dotenv.config();
 
-const opts = {
-    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: process.env.TOKEN_SECRET
-};
+const unauthorized = (res: Response) => res.status(401).json({ message: 'Unauthorized' });
 
-export const signToken = (user: IUserModel) => {
-    const { id } = user;
-
-    return sign(
-        {
-            id,
-            iat: new Date().getTime(),
-            exp: new Date().setDate(new Date().getDate() + 1)
-        },
-        process.env.TOKEN_SECRET
-    );
-};
-
-export const jwtStrategy = new Strategy(opts, async ({ id }: IPayload, next: VerifiedCallback) => {
-    try {
-        const user = await User.findOne({ _id: id });
-
-        if (!user) return next(null, false);
-        next(null, { id: user.id });
-    } catch (err) {
-        next(err, false);
+export const auth = (requiredRoles: string[] = [roles.user]) => async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    if (req.header('Authorization') == null) {
+        return unauthorized(res);
     }
-});
+
+    try {
+        const token = req.header('Authorization').replace('Bearer ', '');
+        const { id } = verify(token, process.env.TOKEN_SECRET) as IPayload;
+        const user = await User.findOne({ id }).populate('targets');
+        if (!user) return unauthorized(res);
+        if (!user.hasRoles(requiredRoles)) return unauthorized(res);
+
+        req.user = user;
+    } catch (err) {
+        return unauthorized(res);
+    }
+
+    next();
+};

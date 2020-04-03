@@ -2,6 +2,7 @@ import { connect } from 'mongoose';
 import { Seeder } from './seeder';
 import { Service } from 'typedi';
 import { paths } from '../config/options';
+import { Logger } from '../utils/logger';
 
 @Service()
 export class Database {
@@ -13,7 +14,11 @@ export class Database {
 
     public async initialize() {
         try {
-            connect(`${process.env.MONGO_URI}/${process.env.MONGO_DB}`, {
+            const uri = `${process.env.MONGO_URI}/${process.env.MONGO_DB}-${process.env.NODE_ENV}`;
+
+            Logger.info(`Connecting to MongoDB on URI: ${uri}`);
+
+            connect(uri, {
                 useCreateIndex: true,
                 useFindAndModify: false,
                 useNewUrlParser: true,
@@ -23,7 +28,9 @@ export class Database {
             process.exit(0);
         }
 
-        await this.seeder.load(paths.modules);
-        this.seeder.seed();
+        if (process.env.NODE_ENV === 'dev') {
+            await this.seeder.load(paths.modules);
+            this.seeder.seed();
+        }
     }
 }

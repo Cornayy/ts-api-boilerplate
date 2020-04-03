@@ -10,9 +10,10 @@
         "outDir": "./dist",
         "baseUrl": "./",
         "incremental": true,
+        "esModuleInterop": true,
         "noUnusedLocals": true,
         "moduleResolution": "node"
     },
-    "include": ["src"],
+    "include": ["src", "types/types.ts"],
     "exclude": ["node_modules", "dist", "/**/*.spec.ts"]
 }

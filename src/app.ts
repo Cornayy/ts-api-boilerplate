@@ -1,14 +1,11 @@
 import 'reflect-metadata';
-import * as express from 'express';
-import * as cors from 'cors';
-import * as passport from 'passport';
+import express from 'express';
+import cors from 'cors';
 import { Logger } from './utils/logger';
 import { Router } from './routes/router';
 import { Service } from 'typedi';
 import { Database } from './database/database';
 import { apiOptions } from './config/options';
-import { jwtStrategy } from './middleware/auth.middleware';
-import { error } from './middleware/error.middleware';
 
 @Service()
 export class App {
@@ -28,33 +25,27 @@ export class App {
 
     private setup() {
         this.initialize();
-        this.setStrategies();
         this.setRoutes();
-        this.setMiddleware();
         this.app.listen(this.port);
 
         this.database.initialize();
-        Logger.info('App launched.');
+        Logger.info(`App launched on port ${this.port}`);
     }
 
     private initialize() {
         this.app.use(cors());
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: true }));
-        this.app.use(passport.initialize());
-    }
-
-    private setMiddleware() {
-        this.app.use(error);
-    }
-
-    private setStrategies() {
-        passport.use(jwtStrategy);
     }
 
     private setRoutes() {
         try {
-            this.router.routes.forEach(route => this.app.use(apiOptions.baseUrl, route.router));
+            this.router.routes.forEach(route =>
+                this.app.use(
+                    route.path !== '/' ? `${apiOptions.baseUrl}${route.path}` : route.path,
+                    route.router
+                )
+            );
         } catch (err) {
             Logger.error(err);
         }

@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { ISeed } from '../types';
+import { ISeed } from '../../types';
 import { Logger } from '../utils/logger';
 import { Service } from 'typedi';
 import { promises } from 'fs';

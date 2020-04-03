@@ -1,4 +1,4 @@
-import { ISeed } from '../../types';
+import { ISeed } from '../../../types';
 import { Author } from './author';
 
 export const authorSeed: ISeed = {

@@ -1,13 +1,13 @@
 import { UserController } from './../modules/user/user.controller';
 import { Router } from 'express';
-import { IUserController, IRoute } from '../types';
+import { IRoute } from '../../types';
 import { Service } from 'typedi';
 
 @Service()
 export class UserRoute implements IRoute {
     public path: string;
     public router: Router;
-    public controller: IUserController;
+    public controller: UserController;
 
     constructor(controller: UserController) {
         this.controller = controller;
@@ -17,7 +17,6 @@ export class UserRoute implements IRoute {
     }
 
     private setRoutes(): void {
-        this.router.post(this.path, this.controller.create);
-        this.router.post('/login', this.controller.login);
+        this.router.post('/', this.controller.create);
     }
 }

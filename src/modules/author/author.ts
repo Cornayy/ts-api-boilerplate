@@ -1,33 +1,6 @@
 import { Initializer } from '../../utils/initializer';
 import { model, Schema } from 'mongoose';
-import { IAuthor } from '../../types';
-
-/**
- * @swagger
- * definitions:
- *   Author:
- *     type: object
- *     required:
- *     - name
- *     - firstName
- *     - lastName
- *     - birthDate
- *     properties:
- *      birthDate:
- *       type: string
- *      books:
- *       type: array
- *       items:
- *         $ref: '#definitions/Book'
- *      country:
- *       type: string
- *      firstName:
- *       type: string
- *      lastName:
- *       type: string
- *      ranking:
- *       type: integer
- */
+import { IAuthor } from '../../../types';
 
 export const authorSchema = new Schema({
     _id: { type: String },

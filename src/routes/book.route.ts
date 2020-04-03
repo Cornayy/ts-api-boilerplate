@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { IController, IRoute } from '../types';
+import { IController, IRoute } from '../../types';
 import { BookController } from '../modules/book/book.controller';
 import { Service } from 'typedi';
 
@@ -17,6 +17,6 @@ export class BookRoute implements IRoute {
     }
 
     private setRoutes(): void {
-        this.router.get(this.path, this.controller.getAll);
+        this.router.get('/', this.controller.getAll);
     }
 }

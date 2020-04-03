@@ -1,4 +1,4 @@
-import { IAuthor } from '../../types';
+import { IAuthor } from '../../../types';
 import { Author } from './author';
 import { Service } from 'typedi';
 

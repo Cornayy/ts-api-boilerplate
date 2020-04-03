@@ -1,5 +1,5 @@
 import { Book } from './book';
-import { ISeed } from '../../types';
+import { ISeed } from '../../../types';
 
 export const bookSeed: ISeed = {
     Model: Book,

@@ -1,7 +1,7 @@
-import * as swaggerUi from 'swagger-ui-express';
-import * as swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUiExpress from 'swagger-ui-express';
+import swaggerJsdoc from 'swagger-jsdoc';
 import { Router } from 'express';
-import { IRoute } from '../types';
+import { IRoute } from '../../types';
 import { Service } from 'typedi';
 import { options } from '../config/swagger';
 
@@ -12,13 +12,13 @@ export class DocsRoute implements IRoute {
     public router: Router;
 
     constructor() {
-        this.swaggerSpec = swaggerJSDoc(options);
+        this.swaggerSpec = swaggerJsdoc(options);
         this.router = Router();
         this.path = '/docs';
         this.setRoutes();
     }
 
     private setRoutes(): void {
-        this.router.use(this.path, swaggerUi.serve, swaggerUi.setup(this.swaggerSpec));
+        this.router.use('/', swaggerUiExpress.serve, swaggerUiExpress.setup(this.swaggerSpec));
     }
 }
