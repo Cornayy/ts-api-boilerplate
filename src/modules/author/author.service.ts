@@ -4,7 +4,7 @@ import { Service } from 'typedi';
 
 @Service()
 export class AuthorService {
-    public getAuthors(): Promise<IAuthor[]> {
-        return Author.find({}).exec();
+    public async getAuthors(): Promise<IAuthor[]> {
+        return await Author.find({}).populate('books');
     }
 }

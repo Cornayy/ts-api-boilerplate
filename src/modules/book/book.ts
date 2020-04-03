@@ -8,7 +8,8 @@ export const bookSchema = new Schema({
     chapters: [
         {
             numberOfPages: { type: Number, required: true },
-            title: { type: String, required: true }
+            title: { type: String, required: true },
+            _id: false
         }
     ],
     publishDate: {

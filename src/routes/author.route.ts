@@ -2,8 +2,6 @@ import { Router } from 'express';
 import { IController, IRoute } from '../../types';
 import { AuthorController } from '../modules/author/author.controller';
 import { Service } from 'typedi';
-import { auth } from '../middleware/auth.middleware';
-import { roles } from '../modules/user/user';
 
 @Service()
 export class AuthorRoute implements IRoute {
@@ -19,10 +17,6 @@ export class AuthorRoute implements IRoute {
     }
 
     private setRoutes(): void {
-        this.router.get(
-            this.path,
-            auth([roles.user]),
-            this.controller.getAll
-        );
+        this.router.get('/', this.controller.getAll);
     }
 }
