@@ -1,4 +1,4 @@
-import { IController, IBook } from '../../../types';
+import { IController, IBook } from '../../types';
 import { Service } from 'typedi';
 import { BookService } from './book.service';
 import { Request, Response, NextFunction } from 'express';

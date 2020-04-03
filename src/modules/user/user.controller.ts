@@ -1,5 +1,5 @@
 import { UserService } from './user.service';
-import { IController, IUser } from '../../../types';
+import { IController, IUser } from '../../types';
 import { Service } from 'typedi';
 import { NextFunction, Request, Response } from 'express';
 

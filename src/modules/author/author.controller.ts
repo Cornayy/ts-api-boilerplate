@@ -1,4 +1,4 @@
-import { IController, IAuthor } from '../../../types';
+import { IController, IAuthor } from '../../types';
 import { Service } from 'typedi';
 import { AuthorService } from './author.service';
 import { Request, Response, NextFunction } from 'express';

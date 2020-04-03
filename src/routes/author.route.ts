@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { IController, IRoute } from '../../types';
+import { IController, IRoute } from '../types';
 import { AuthorController } from '../modules/author/author.controller';
 import { Service } from 'typedi';
 

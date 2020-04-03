@@ -1,4 +1,4 @@
-import { IUserModel } from '../../../types';
+import { IUserModel } from '../../types';
 import { model, Schema } from 'mongoose';
 import { Initializer } from '../../utils/initializer';
 import { hash, compare } from 'bcryptjs';

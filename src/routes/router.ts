@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import dotenv from 'dotenv';
 import { UserRoute } from './user.route';
-import { IRoute } from '../../types';
+import { IRoute } from '../types';
 import { DocsRoute } from './docs.route';
 import { AuthorRoute } from './author.route';
 import { BookRoute } from './book.route';

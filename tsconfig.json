@@ -14,6 +14,6 @@
         "noUnusedLocals": true,
         "moduleResolution": "node"
     },
-    "include": ["src", "types/types.ts"],
+    "include": ["src", "src/types/types.ts"],
     "exclude": ["node_modules", "dist", "/**/*.spec.ts"]
 }

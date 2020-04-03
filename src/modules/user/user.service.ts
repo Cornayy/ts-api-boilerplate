@@ -1,4 +1,4 @@
-import { IUser, IUserModel } from '../../../types';
+import { IUser, IUserModel } from '../../types';
 import { User } from './user';
 import { Service } from 'typedi';
 import { RequestError } from '../../errors/errors';

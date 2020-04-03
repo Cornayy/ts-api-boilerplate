@@ -1,4 +1,4 @@
-import { IBook } from '../../../types';
+import { IBook } from '../../types';
 import { model, Schema } from 'mongoose';
 import { Initializer } from '../../utils/initializer';
 

@@ -1,6 +1,6 @@
 import { Initializer } from '../../utils/initializer';
 import { model, Schema } from 'mongoose';
-import { IAuthor } from '../../../types';
+import { IAuthor } from '../../types';
 
 export const authorSchema = new Schema({
     _id: { type: String },

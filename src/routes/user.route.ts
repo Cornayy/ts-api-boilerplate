@@ -1,6 +1,6 @@
 import { UserController } from './../modules/user/user.controller';
 import { Router } from 'express';
-import { IRoute } from '../../types';
+import { IRoute } from '../types';
 import { Service } from 'typedi';
 
 @Service()

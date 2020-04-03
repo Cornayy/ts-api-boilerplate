@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { IPayload } from '../../types';
+import { IPayload } from '../types';
 import { Response, Request, NextFunction } from 'express';
 import { User, roles } from '../modules/user/user';
 import { verify } from 'jsonwebtoken';
