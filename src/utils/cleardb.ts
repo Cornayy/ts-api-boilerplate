@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv';
 import { connection } from 'mongoose';
-import { Logger } from './logger';
+import { Logger } from '../utils/logger';
 import { Container } from 'typedi';
 import { Database } from '../database/database';
 

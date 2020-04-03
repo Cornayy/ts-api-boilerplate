@@ -1,4 +1,3 @@
-
 import chalk from 'chalk';
 import loglevelPluginPrefix from 'loglevel-plugin-prefix';
 import { Logger } from 'loglevel';
